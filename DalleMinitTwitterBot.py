@@ -26,6 +26,7 @@ POST_MESSAGE = "%%Your post message here%%" # text message to be added to the po
 DELAY_BETWEEN_POSTS_SECONDS = 60*60 # sets up delay between post attempts
 QUERIES = ['%%query for image1%%', '%%query for image 2%%, '%%query for image N%%] # queries for Dall-E mini by which images will be generated, picking 1 randomly at each iteration
 MAX_ITERATIONS = -1 # max posting attempts, leave negative for infitine loop
+MAX_RETRIES = 10 # max attempts to get images from dalle-mini
 
 def twitter_api():
 	auth = tweepy.OAuth1UserHandler(
@@ -51,8 +52,6 @@ def tweet_image(query, message):
 def getDalleMiniImage(query):
 	url = 'https://bf.dallemini.ai/generate'
 	myobj = {'prompt': query}
-	MAX_RETRIES = 10;
-
 	headers = {
     		"Accept": "application/json",
     		"Accept-Language": "en-US,en;q=0.9,ru-UA;q=0.8,ru;q=0.7,uk;q=0.6", 
