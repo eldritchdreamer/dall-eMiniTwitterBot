@@ -90,6 +90,7 @@ def getDalleMiniImage(query):
 		return False
 	
 count = 0
+# more sophisticated timer approach is possible, but I don't really need it so far so just simple loop
 while count < MAX_ITERATIONS or MAX_ITERATIONS < 0:
 	print("Iteration " + str(count))
 	count+=1
